@@ -45,7 +45,10 @@ for _s in (sys.stdout, sys.stderr):
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
 OUTD = ROOT / "artifacts" / "qual_gap"
-OUTD.mkdir(parents=True, exist_ok=True)
+try:
+    OUTD.mkdir(parents=True, exist_ok=True)
+except OSError:
+    pass
 TASKS = [("总抗菌(H2)", "anti_bacterial_any"), ("抗细菌", "anti_bacterial"),
          ("抗革兰阳性", "anti_gram_pos"), ("抗革兰阴性", "anti_gram_neg"),
          ("抗真菌", "anti_fungal")]

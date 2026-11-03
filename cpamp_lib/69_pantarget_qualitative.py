@@ -68,7 +68,10 @@ if str(HERE) not in sys.path:
 ROOT = HERE.parent
 DDIR = ROOT / "datasets"
 OUTD = ROOT / "artifacts" / "pantarget"
-OUTD.mkdir(parents=True, exist_ok=True)
+try:
+    OUTD.mkdir(parents=True, exist_ok=True)
+except OSError:
+    pass
 
 #: 5 个定性目标（列名与 05 号一致）
 TASKS = [("总抗菌(H2)", "anti_bacterial_any"),
@@ -335,7 +338,10 @@ def run(seeds=(0, 1, 2), sequence_mode="resolved_v2"):
 
     D = pd.DataFrame(rows)
     output_dir = OUTD if sequence_mode == "legacy" else ROOT / "artifacts" / "sequence_repair_v2"
-    output_dir.mkdir(parents=True, exist_ok=True)
+    try:
+        output_dir.mkdir(parents=True, exist_ok=True)
+    except OSError:
+        pass
     fp = output_dir / ("pantarget_metrics.csv" if sequence_mode == "legacy"
                        else "independent_vs_unified_corrected.csv")
     if fp.exists():

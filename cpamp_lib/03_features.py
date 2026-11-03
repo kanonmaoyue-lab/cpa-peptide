@@ -659,7 +659,10 @@ def run(args) -> int:
     log(f"    环化分布：{cyc_dist}")
 
     log("④ 落盘")
-    FEAT.mkdir(parents=True, exist_ok=True)
+    try:
+        FEAT.mkdir(parents=True, exist_ok=True)
+    except OSError:
+        pass
     p1, f1 = mod.save_table(panel, FEAT, PANEL_VERSION)
     log(f"    ✅ {p1.name} ({len(panel)} × {len(feat_cols)}, {f1})")
     np.savez_compressed(FEAT / "fingerprints.npz", **fps)

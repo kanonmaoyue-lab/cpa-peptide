@@ -50,7 +50,10 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
 DDIR = ROOT / "datasets" / "DBAASP_full"
 OUTD = ROOT / "artifacts" / "models_by_cyclization"
-OUTD.mkdir(parents=True, exist_ok=True)
+try:
+    OUTD.mkdir(parents=True, exist_ok=True)
+except OSError:
+    pass
 
 #: 定量任务 -> 数据集里的列名
 TASKS = {"gram_pos": "log10_um_gram_pos",

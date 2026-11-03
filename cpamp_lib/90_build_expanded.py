@@ -53,7 +53,10 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
 DDIR = ROOT / "datasets" / "DBAASP_full"
 OUTD = ROOT / "artifacts" / "expanded"
-OUTD.mkdir(parents=True, exist_ok=True)
+try:
+    OUTD.mkdir(parents=True, exist_ok=True)
+except OSError:
+    pass
 
 #: ⭐ 永久外部验证菌株（绝不进训练）
 HOLDOUT_STRAINS = {
@@ -181,8 +184,14 @@ def build(min_per_strain=30, exclude_holdout=True, sequence_mode="resolved_v2"):
     from cpamp_sequence import database_sequence_lookup, replace_sequence_block
     feature_dir = DDIR if sequence_mode == "legacy" else DDIR / "sequence_repair_v2"
     result_dir = OUTD if sequence_mode == "legacy" else ROOT / "artifacts" / "sequence_repair_v2"
-    feature_dir.mkdir(parents=True, exist_ok=True)
-    result_dir.mkdir(parents=True, exist_ok=True)
+    try:
+        feature_dir.mkdir(parents=True, exist_ok=True)
+    except OSError:
+        pass
+    try:
+        result_dir.mkdir(parents=True, exist_ok=True)
+    except OSError:
+        pass
     t0 = time.time()
     mp = pd.read_csv(DDIR / "mic_pairs.csv")
     mp["dbaasp_id"] = mp["dbaasp_id"].astype(str)

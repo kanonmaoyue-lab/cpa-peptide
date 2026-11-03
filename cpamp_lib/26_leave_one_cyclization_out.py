@@ -42,7 +42,10 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
 DDIR = ROOT / "datasets" / "DBAASP_full"
 OUTD = ROOT / "artifacts" / "locto"
-OUTD.mkdir(parents=True, exist_ok=True)
+try:
+    OUTD.mkdir(parents=True, exist_ok=True)
+except OSError:
+    pass
 
 #: 目标菌株（用户指定重点）
 TARGET_STRAINS = [

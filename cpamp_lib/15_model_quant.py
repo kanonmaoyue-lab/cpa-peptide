@@ -45,7 +45,10 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
 DDIR = ROOT / "datasets" / "DBAASP_full"
 OUTD = ROOT / "artifacts" / "quant"
-OUTD.mkdir(parents=True, exist_ok=True)
+try:
+    OUTD.mkdir(parents=True, exist_ok=True)
+except OSError:
+    pass
 
 TASKS = {"gram_pos": "log10_um_gram_pos", "gram_neg": "log10_um_gram_neg",
          "fungal": "log10_um_fungal"}

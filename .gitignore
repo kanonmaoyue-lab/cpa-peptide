@@ -18,3 +18,13 @@ Thumbs.db
 # 若模型改用 Git LFS，取消下面注释
 # *.pkl filter=lfs diff=lfs merge=lfs -text
 # *.npz filter=lfs diff=lfs merge=lfs -text
+
+# 推理时由模块自动创建的空目录（不属于仓库内容）
+artifacts/expanded/
+artifacts/locto/
+artifacts/models_by_cyclization/
+artifacts/quant/
+artifacts/sequence_repair_v2/
+artifacts/features/
+artifacts/qual_gap/
+artifacts/external_strain/
