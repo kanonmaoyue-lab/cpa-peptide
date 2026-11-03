@@ -1,0 +1,932 @@
+{
+ "Pseudomonas aeruginosa ATCC 27853": {
+  "n": 983,
+  "pep": 983,
+  "R2": 0.6611,
+  "level": "充分"
+ },
+ "Staphylococcus aureus ATCC 29213": {
+  "n": 607,
+  "pep": 607,
+  "R2": 0.6798,
+  "level": "充分"
+ },
+ "Staphylococcus aureus": {
+  "n": 528,
+  "pep": 528,
+  "R2": 0.5431,
+  "level": "充分"
+ },
+ "Acinetobacter baumannii ATCC 19606": {
+  "n": 385,
+  "pep": 385,
+  "R2": 0.7014,
+  "level": "充分"
+ },
+ "Pseudomonas aeruginosa": {
+  "n": 355,
+  "pep": 355,
+  "R2": 0.5546,
+  "level": "充分"
+ },
+ "Escherichia coli": {
+  "n": 309,
+  "pep": 309,
+  "R2": 0.5682,
+  "level": "充分"
+ },
+ "Klebsiella pneumoniae ATCC 13883": {
+  "n": 287,
+  "pep": 287,
+  "R2": 0.7575,
+  "level": "充分"
+ },
+ "Bacillus subtilis ATCC 6633": {
+  "n": 284,
+  "pep": 284,
+  "R2": 0.6964,
+  "level": "充分"
+ },
+ "Staphylococcus aureus ATCC 43300": {
+  "n": 251,
+  "pep": 251,
+  "R2": 0.3928,
+  "level": "可用"
+ },
+ "Klebsiella pneumoniae ATCC 700603": {
+  "n": 236,
+  "pep": 236,
+  "R2": 0.6497,
+  "level": "充分"
+ },
+ "Klebsiella pneumoniae": {
+  "n": 235,
+  "pep": 235,
+  "R2": 0.6271,
+  "level": "充分"
+ },
+ "Staphylococcus aureus ATCC 6538": {
+  "n": 222,
+  "pep": 222,
+  "R2": 0.5707,
+  "level": "充分"
+ },
+ "Bacillus subtilis": {
+  "n": 217,
+  "pep": 217,
+  "R2": 0.3591,
+  "level": "可用"
+ },
+ "Candida albicans ATCC 90028": {
+  "n": 205,
+  "pep": 205,
+  "R2": 0.7449,
+  "level": "充分"
+ },
+ "Candida albicans": {
+  "n": 203,
+  "pep": 203,
+  "R2": 0.0965,
+  "level": "弱"
+ },
+ "Acinetobacter baumannii": {
+  "n": 197,
+  "pep": 197,
+  "R2": 0.6414,
+  "level": "充分"
+ },
+ "Staphylococcus aureus ATCC 33591": {
+  "n": 189,
+  "pep": 189,
+  "R2": 0.6347,
+  "level": "充分"
+ },
+ "Staphylococcus epidermidis ATCC 12228": {
+  "n": 188,
+  "pep": 188,
+  "R2": 0.7535,
+  "level": "充分"
+ },
+ "Candida albicans ATCC 2002": {
+  "n": 171,
+  "pep": 171,
+  "R2": 0.3509,
+  "level": "可用"
+ },
+ "Candida albicans ATCC 10231": {
+  "n": 154,
+  "pep": 154,
+  "R2": 0.6125,
+  "level": "充分"
+ },
+ "Pseudomonas syringae pv. syringae EPS 94": {
+  "n": 147,
+  "pep": 147,
+  "R2": 0.2474,
+  "level": "可用"
+ },
+ "Salmonella enterica subsp. enterica serovar Typhimurium ATCC 14028": {
+  "n": 144,
+  "pep": 144,
+  "R2": 0.7101,
+  "level": "充分"
+ },
+ "Pseudomonas aeruginosa ATCC 9027": {
+  "n": 138,
+  "pep": 138,
+  "R2": 0.3798,
+  "level": "可用"
+ },
+ "Erwinia amylovora PMV 6076": {
+  "n": 132,
+  "pep": 132,
+  "R2": 0.1683,
+  "level": "弱"
+ },
+ "Staphylococcus aureus USA 300": {
+  "n": 129,
+  "pep": 129,
+  "R2": 0.2604,
+  "level": "可用"
+ },
+ "Enterococcus faecium ATCC 700221": {
+  "n": 127,
+  "pep": 127,
+  "R2": 0.6547,
+  "level": "充分"
+ },
+ "Staphylococcus aureus ATCC BAA-1556": {
+  "n": 127,
+  "pep": 127,
+  "R2": 0.701,
+  "level": "充分"
+ },
+ "Bacillus subtilis 168": {
+  "n": 125,
+  "pep": 125,
+  "R2": 0.3572,
+  "level": "可用"
+ },
+ "Mycobacterium tuberculosis H37Rv": {
+  "n": 122,
+  "pep": 122,
+  "R2": 0.4476,
+  "level": "充分"
+ },
+ "Acinetobacter baumannii ATCC BAA-1605": {
+  "n": 120,
+  "pep": 120,
+  "R2": 0.7801,
+  "level": "充分"
+ },
+ "Escherichia coli DH5alpha": {
+  "n": 116,
+  "pep": 116,
+  "R2": 0.387,
+  "level": "可用"
+ },
+ "Bacillus cereus ATCC 14579": {
+  "n": 115,
+  "pep": 115,
+  "R2": 0.758,
+  "level": "充分"
+ },
+ "Enterococcus faecalis": {
+  "n": 115,
+  "pep": 115,
+  "R2": 0.617,
+  "level": "充分"
+ },
+ "Streptococcus pneumoniae ATCC 49619": {
+  "n": 112,
+  "pep": 112,
+  "R2": 0.1703,
+  "level": "弱"
+ },
+ "Staphylococcus epidermidis": {
+  "n": 112,
+  "pep": 112,
+  "R2": 0.49,
+  "level": "充分"
+ },
+ "Staphylococcus aureus 209P": {
+  "n": 111,
+  "pep": 111,
+  "R2": 0.4289,
+  "level": "充分"
+ },
+ "Escherichia coli ATCC 8739": {
+  "n": 109,
+  "pep": 109,
+  "R2": 0.4138,
+  "level": "充分"
+ },
+ "Pseudomonas aeruginosa ATCC 10145": {
+  "n": 106,
+  "pep": 106,
+  "R2": 0.2591,
+  "level": "可用"
+ },
+ "Escherichia coli ML-35p": {
+  "n": 104,
+  "pep": 104,
+  "R2": 0.529,
+  "level": "充分"
+ },
+ "Klebsiella pneumoniae ATCC BAA-2146": {
+  "n": 96,
+  "pep": 96,
+  "R2": 0.3285,
+  "level": "可用"
+ },
+ "Klebsiella pneumoniae ATCC BAA-1705": {
+  "n": 96,
+  "pep": 96,
+  "R2": 0.5992,
+  "level": "充分"
+ },
+ "Bacillus subtilis ATCC 6051": {
+  "n": 94,
+  "pep": 94,
+  "R2": 0.6117,
+  "level": "充分"
+ },
+ "Enterococcus faecalis ATCC 51575": {
+  "n": 90,
+  "pep": 90,
+  "R2": 0.5015,
+  "level": "充分"
+ },
+ "Staphylococcus aureus MR": {
+  "n": 90,
+  "pep": 90,
+  "R2": 0.4008,
+  "level": "充分"
+ },
+ "Micrococcus luteus": {
+  "n": 86,
+  "pep": 86,
+  "R2": 0.4683,
+  "level": "充分"
+ },
+ "Staphylococcus aureus NCTC 8325": {
+  "n": 83,
+  "pep": 83,
+  "R2": 0.2695,
+  "level": "可用"
+ },
+ "Candida krusei ATCC 6258": {
+  "n": 82,
+  "pep": 82,
+  "R2": 0.3478,
+  "level": "可用"
+ },
+ "Enterococcus faecium": {
+  "n": 82,
+  "pep": 82,
+  "R2": 0.5034,
+  "level": "充分"
+ },
+ "Klebsiella pneumoniae ATCC 43816": {
+  "n": 81,
+  "pep": 81,
+  "R2": 0.589,
+  "level": "充分"
+ },
+ "Pseudomonas aeruginosa ATCC BAA-1744": {
+  "n": 81,
+  "pep": 81,
+  "R2": -0.0057,
+  "level": "弱"
+ },
+ "Xanthomonas vesicatoria 2133-2": {
+  "n": 81,
+  "pep": 81,
+  "R2": 0.0962,
+  "level": "弱"
+ },
+ "Pseudomonas aeruginosa CMCCB 10104": {
+  "n": 81,
+  "pep": 81,
+  "R2": 0.4257,
+  "level": "充分"
+ },
+ "Streptococcus pneumoniae ATCC 700677": {
+  "n": 80,
+  "pep": 80,
+  "R2": -0.1738,
+  "level": "弱"
+ },
+ "Bacillus subtilis BR151": {
+  "n": 80,
+  "pep": 80,
+  "R2": 0.4335,
+  "level": "充分"
+ },
+ "Klebsiella pneumoniae ATCC 10031": {
+  "n": 80,
+  "pep": 80,
+  "R2": 0.4917,
+  "level": "充分"
+ },
+ "Enterococcus faecium ATCC 27270": {
+  "n": 79,
+  "pep": 79,
+  "R2": -0.038,
+  "level": "弱"
+ },
+ "Escherichia coli ATCC BAA-2452": {
+  "n": 79,
+  "pep": 79,
+  "R2": 0.077,
+  "level": "弱"
+ },
+ "Bacillus cereus ATCC 13061": {
+  "n": 78,
+  "pep": 78,
+  "R2": 0.1487,
+  "level": "弱"
+ },
+ "Aspergillus fumigatus Af-293": {
+  "n": 71,
+  "pep": 71,
+  "R2": 0.0095,
+  "level": "弱"
+ },
+ "Candida albicans ATCC 60193": {
+  "n": 71,
+  "pep": 71,
+  "R2": -0.0219,
+  "level": "弱"
+ },
+ "Escherichia coli UB1005": {
+  "n": 71,
+  "pep": 71,
+  "R2": 0.352,
+  "level": "可用"
+ },
+ "Staphylococcus aureus ATCC 2592": {
+  "n": 71,
+  "pep": 71,
+  "R2": 0.0109,
+  "level": "弱"
+ },
+ "Bacillus cereus ATCC 11778": {
+  "n": 71,
+  "pep": 71,
+  "R2": 0.8159,
+  "level": "充分"
+ },
+ "Staphylococcus epidermidis ATCC 14990": {
+  "n": 67,
+  "pep": 67,
+  "R2": 0.7476,
+  "level": "充分"
+ },
+ "Escherichia coli K-12": {
+  "n": 67,
+  "pep": 67,
+  "R2": 0.6603,
+  "level": "充分"
+ },
+ "Acinetobacter baumannii ATCC 17978": {
+  "n": 67,
+  "pep": 67,
+  "R2": 0.487,
+  "level": "充分"
+ },
+ "Xanthomonas campestris pv. Vesicatoria 2133-2": {
+  "n": 66,
+  "pep": 66,
+  "R2": -0.0573,
+  "level": "弱"
+ },
+ "Staphylococcus aureus NBRC 12732": {
+  "n": 62,
+  "pep": 62,
+  "R2": 0.2174,
+  "level": "可用"
+ },
+ "Listeria monocytogenes": {
+  "n": 61,
+  "pep": 61,
+  "R2": 0.196,
+  "level": "弱"
+ },
+ "Candida albicans SC5314": {
+  "n": 61,
+  "pep": 61,
+  "R2": 0.5283,
+  "level": "充分"
+ },
+ "Staphylococcus aureus NCTC 12493": {
+  "n": 61,
+  "pep": 61,
+  "R2": 0.274,
+  "level": "可用"
+ },
+ "Escherichia coli NBRC 12734": {
+  "n": 60,
+  "pep": 60,
+  "R2": 0.2139,
+  "level": "可用"
+ },
+ "Enterobacter cloacae ATCC 13047": {
+  "n": 60,
+  "pep": 60,
+  "R2": 0.5237,
+  "level": "充分"
+ },
+ "Streptococcus pneumoniae": {
+  "n": 60,
+  "pep": 60,
+  "R2": 0.6692,
+  "level": "充分"
+ },
+ "Pseudomonas aeruginosa NBRC 3080": {
+  "n": 60,
+  "pep": 60,
+  "R2": 0.1169,
+  "level": "弱"
+ },
+ "Bacillus subtilis NBRC 3513": {
+  "n": 58,
+  "pep": 58,
+  "R2": 0.2995,
+  "level": "可用"
+ },
+ "Bacillus megaterium ATCC 19213": {
+  "n": 58,
+  "pep": 58,
+  "R2": 0.2621,
+  "level": "可用"
+ },
+ "Pseudomonas aeruginosa ATCC 27883": {
+  "n": 58,
+  "pep": 58,
+  "R2": 0.6458,
+  "level": "充分"
+ },
+ "Staphylococcus aureus ATCC 6538P": {
+  "n": 58,
+  "pep": 58,
+  "R2": 0.725,
+  "level": "充分"
+ },
+ "Enterococcus faecalis NCTC 12697": {
+  "n": 57,
+  "pep": 57,
+  "R2": 0.5822,
+  "level": "充分"
+ },
+ "Enterobacter cloacae": {
+  "n": 57,
+  "pep": 57,
+  "R2": 0.7497,
+  "level": "充分"
+ },
+ "Micrococcus luteus ATCC 4698": {
+  "n": 55,
+  "pep": 55,
+  "R2": 0.2527,
+  "level": "可用"
+ },
+ "Staphylococcus epidermidis NBRC 12933": {
+  "n": 53,
+  "pep": 53,
+  "R2": 0.2892,
+  "level": "可用"
+ },
+ "Salmonella typhimurium": {
+  "n": 53,
+  "pep": 53,
+  "R2": 0.502,
+  "level": "充分"
+ },
+ "Escherichia coli DC2": {
+  "n": 52,
+  "pep": 52,
+  "R2": 0.3256,
+  "level": "可用"
+ },
+ "Fusarium oxysporum f. sp. lycopersici ATCC 201829": {
+  "n": 52,
+  "pep": 52,
+  "R2": 0.1616,
+  "level": "弱"
+ },
+ "Staphylococcus aureus SAP 0017": {
+  "n": 52,
+  "pep": 52,
+  "R2": 0.5105,
+  "level": "充分"
+ },
+ "Fusarium oxysporum": {
+  "n": 52,
+  "pep": 52,
+  "R2": 0.8168,
+  "level": "充分"
+ },
+ "Staphylococcus aureus NCTC 10788": {
+  "n": 52,
+  "pep": 52,
+  "R2": 0.0745,
+  "level": "弱"
+ },
+ "Staphylococcus aureus ATCC 700699": {
+  "n": 52,
+  "pep": 52,
+  "R2": 0.7908,
+  "level": "充分"
+ },
+ "Escherichia coli C600": {
+  "n": 49,
+  "pep": 49,
+  "R2": 0.5627,
+  "level": "充分"
+ },
+ "Shigella dysenteriae": {
+  "n": 49,
+  "pep": 49,
+  "R2": -0.0015,
+  "level": "弱"
+ },
+ "Staphylococcus aureus ATCC 12600": {
+  "n": 49,
+  "pep": 49,
+  "R2": 0.5939,
+  "level": "充分"
+ },
+ "Staphylococcus aureus Newman": {
+  "n": 48,
+  "pep": 48,
+  "R2": -0.045,
+  "level": "弱"
+ },
+ "Bacillus megaterium": {
+  "n": 48,
+  "pep": 48,
+  "R2": 0.5114,
+  "level": "充分"
+ },
+ "Escherichia coli ATCC 35218": {
+  "n": 48,
+  "pep": 48,
+  "R2": 0.1438,
+  "level": "弱"
+ },
+ "Cryptococcus neoformans ATCC 208821": {
+  "n": 46,
+  "pep": 46,
+  "R2": 0.3534,
+  "level": "可用"
+ },
+ "Bacillus subtilis ATCC 23857": {
+  "n": 46,
+  "pep": 46,
+  "R2": 0.2414,
+  "level": "可用"
+ },
+ "Escherichia coli NCTC 10418": {
+  "n": 45,
+  "pep": 45,
+  "R2": -0.0444,
+  "level": "弱"
+ },
+ "Listeria monocytogenes 10403s": {
+  "n": 44,
+  "pep": 44,
+  "R2": 0.6126,
+  "level": "充分"
+ },
+ "Escherichia coli W3110": {
+  "n": 44,
+  "pep": 44,
+  "R2": 0.2732,
+  "level": "可用"
+ },
+ "Serratia marcescens": {
+  "n": 44,
+  "pep": 44,
+  "R2": 0.2901,
+  "level": "可用"
+ },
+ "Shigella dysenteriae ATCC 9752": {
+  "n": 44,
+  "pep": 44,
+  "R2": 0.5078,
+  "level": "充分"
+ },
+ "Psychrobacter faecalis X29": {
+  "n": 43,
+  "pep": 43,
+  "R2": 0.1283,
+  "level": "弱"
+ },
+ "Bacillus cereus": {
+  "n": 43,
+  "pep": 43,
+  "R2": -0.1321,
+  "level": "弱"
+ },
+ "Botrytis cinerea": {
+  "n": 42,
+  "pep": 42,
+  "R2": 0.7323,
+  "level": "充分"
+ },
+ "Escherichia coli ATCC 25726": {
+  "n": 42,
+  "pep": 42,
+  "R2": 0.548,
+  "level": "充分"
+ },
+ "Staphylococcus aureus ATCC 700698": {
+  "n": 41,
+  "pep": 41,
+  "R2": 0.6764,
+  "level": "充分"
+ },
+ "Acinetobacter baumannii ATCC BAA-747": {
+  "n": 41,
+  "pep": 41,
+  "R2": 0.3276,
+  "level": "可用"
+ },
+ "Candida parapsilosis ATCC 22019": {
+  "n": 40,
+  "pep": 40,
+  "R2": 0.1108,
+  "level": "弱"
+ },
+ "Streptococcus pyogenes ATCC 19615": {
+  "n": 40,
+  "pep": 40,
+  "R2": 0.5492,
+  "level": "充分"
+ },
+ "Escherichia coli MG1655": {
+  "n": 39,
+  "pep": 39,
+  "R2": 0.38,
+  "level": "可用"
+ },
+ "Staphylococcus aureus ATCC 9144": {
+  "n": 38,
+  "pep": 38,
+  "R2": 0.4069,
+  "level": "充分"
+ },
+ "Bacillus cereus JCM 20037": {
+  "n": 37,
+  "pep": 37,
+  "R2": 0.631,
+  "level": "充分"
+ },
+ "Bacillus subtilis JCM 2499": {
+  "n": 37,
+  "pep": 37,
+  "R2": 0.6221,
+  "level": "充分"
+ },
+ "Streptococcus pyogenes": {
+  "n": 37,
+  "pep": 37,
+  "R2": 0.3949,
+  "level": "可用"
+ },
+ "Staphylococcus saprophyticus ATCC 15305": {
+  "n": 37,
+  "pep": 37,
+  "R2": 0.8842,
+  "level": "充分"
+ },
+ "Proteus mirabilis": {
+  "n": 37,
+  "pep": 37,
+  "R2": 0.5827,
+  "level": "充分"
+ },
+ "Mycobacterium smegmatis mc2-155": {
+  "n": 37,
+  "pep": 37,
+  "R2": -0.2218,
+  "level": "弱"
+ },
+ "Escherichia coli SBS 363": {
+  "n": 37,
+  "pep": 37,
+  "R2": 0.4272,
+  "level": "充分"
+ },
+ "Salmonella typhimurium C610": {
+  "n": 36,
+  "pep": 36,
+  "R2": -0.2029,
+  "level": "弱"
+ },
+ "Klebsiella pneumoniae FADDI-KP032": {
+  "n": 36,
+  "pep": 36,
+  "R2": 0.4221,
+  "level": "充分"
+ },
+ "Pseudomonas aeruginosa FADDI-PA025": {
+  "n": 36,
+  "pep": 36,
+  "R2": 0.3733,
+  "level": "可用"
+ },
+ "Enterococcus faecium ATCC 19434": {
+  "n": 35,
+  "pep": 35,
+  "R2": 0.4182,
+  "level": "充分"
+ },
+ "Staphylococcus haemolyticus JCM 2416": {
+  "n": 35,
+  "pep": 35,
+  "R2": 0.669,
+  "level": "充分"
+ },
+ "Stenotrophomonas maltophilia WH006": {
+  "n": 35,
+  "pep": 35,
+  "R2": 0.4794,
+  "level": "充分"
+ },
+ "Lysobacter enzymogenes YC36": {
+  "n": 35,
+  "pep": 35,
+  "R2": 0.485,
+  "level": "充分"
+ },
+ "Acinetobacter baumannii AB5075": {
+  "n": 35,
+  "pep": 35,
+  "R2": -0.3281,
+  "level": "弱"
+ },
+ "Latilactobacillus sakei NCDO 2714": {
+  "n": 34,
+  "pep": 34,
+  "R2": 0.2408,
+  "level": "可用"
+ },
+ "Loigolactobacillus coryniformis subsp. torquens NCDO 2740": {
+  "n": 33,
+  "pep": 33,
+  "R2": 0.4806,
+  "level": "充分"
+ },
+ "Bacillus subtilis VKM B-886": {
+  "n": 33,
+  "pep": 33,
+  "R2": 0.1345,
+  "level": "弱"
+ },
+ "Stenotrophomonas maltophilia": {
+  "n": 33,
+  "pep": 33,
+  "R2": 0.4448,
+  "level": "充分"
+ },
+ "Staphylococcus aureus Smith ATCC 13709": {
+  "n": 33,
+  "pep": 33,
+  "R2": 0.3323,
+  "level": "可用"
+ },
+ "Enterococcus faecalis NCDO 581": {
+  "n": 33,
+  "pep": 33,
+  "R2": 0.591,
+  "level": "充分"
+ },
+ "Corynebacterium xerosis": {
+  "n": 33,
+  "pep": 33,
+  "R2": 0.1037,
+  "level": "弱"
+ },
+ "Escherichia coli JM109": {
+  "n": 33,
+  "pep": 33,
+  "R2": 0.2839,
+  "level": "可用"
+ },
+ "Candida tropicalis": {
+  "n": 33,
+  "pep": 33,
+  "R2": -0.1025,
+  "level": "弱"
+ },
+ "Enterococcus faecalis 981": {
+  "n": 33,
+  "pep": 33,
+  "R2": 0.5093,
+  "level": "充分"
+ },
+ "Micrococcus luteus A270": {
+  "n": 33,
+  "pep": 33,
+  "R2": 0.531,
+  "level": "充分"
+ },
+ "Candida albicans ATCC 200955": {
+  "n": 32,
+  "pep": 32,
+  "R2": 0.4018,
+  "level": "充分"
+ },
+ "Saccharomyces cerevisiae": {
+  "n": 32,
+  "pep": 32,
+  "R2": 0.7168,
+  "level": "充分"
+ },
+ "Aeromonas hydrophila": {
+  "n": 31,
+  "pep": 31,
+  "R2": -0.0521,
+  "level": "弱"
+ },
+ "Staphylococcus aureus K147": {
+  "n": 31,
+  "pep": 31,
+  "R2": 0.0768,
+  "level": "弱"
+ },
+ "Pseudomonas aeruginosa H188": {
+  "n": 31,
+  "pep": 31,
+  "R2": 0.0921,
+  "level": "弱"
+ },
+ "Cryptococcus neoformans": {
+  "n": 31,
+  "pep": 31,
+  "R2": 0.126,
+  "level": "弱"
+ },
+ "Escherichia coli CVCC 195": {
+  "n": 31,
+  "pep": 31,
+  "R2": 0.6118,
+  "level": "充分"
+ },
+ "Candida albicans ATCC 14053": {
+  "n": 31,
+  "pep": 31,
+  "R2": 0.2554,
+  "level": "可用"
+ },
+ "Micrococcus luteus ATCC 9341": {
+  "n": 31,
+  "pep": 31,
+  "R2": 0.5861,
+  "level": "充分"
+ },
+ "Pseudomonas aeruginosa H187": {
+  "n": 31,
+  "pep": 31,
+  "R2": 0.211,
+  "level": "可用"
+ },
+ "Acinetobacter baumannii FADDI-AB030": {
+  "n": 30,
+  "pep": 30,
+  "R2": -0.0678,
+  "level": "弱"
+ },
+ "Acinetobacter baumannii FADDI-AB034": {
+  "n": 30,
+  "pep": 30,
+  "R2": -0.0496,
+  "level": "弱"
+ },
+ "Klebsiella pneumoniae FADDI-KP065": {
+  "n": 30,
+  "pep": 30,
+  "R2": -0.1235,
+  "level": "弱"
+ },
+ "Escherichia coli D31": {
+  "n": 30,
+  "pep": 30,
+  "R2": 0.3252,
+  "level": "可用"
+ },
+ "Staphylococcus aureus AB94004": {
+  "n": 30,
+  "pep": 30,
+  "R2": 0.2624,
+  "level": "可用"
+ },
+ "Pseudomonas aeruginosa FADDI-PA038": {
+  "n": 30,
+  "pep": 30,
+  "R2": -0.1288,
+  "level": "弱"
+ }
+}

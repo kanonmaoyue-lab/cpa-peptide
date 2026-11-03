@@ -1,0 +1,13 @@
+﻿ID,SMILES
+T01,CC(C)C[C@@H]1NC(=O)[C@@H](CC(C)C)NC(=O)[C@H](C(C)C)NC(=O)[C@H](CC(N)=O)NC(=O)[C@@H](CCCN)NC(=O)[C@H](Cc2ccc(O)cc2)NC1=O
+T02,CC(C)C[C@H](NC(=O)[C@H](CCCCN)NC(=O)[C@H](CCCCN)NC(=O)[C@H](Cc1ccccc1)NC(=O)[C@H](Cc1ccccc1)NC(=O)[C@@H](N)CCCCN)C(=O)N[C@@H](CCCCN)C(=O)N[C@@H](CCCCN)C(=O)N[C@@H](C)C(=O)N[C@H](C(=O)N[C@@H](CCCCN)C(=O)N[C@H]1CCCCNC/C=C/CNCCCC[C@@H](C(=O)N[C@H](C(=O)O)C(C)C)NC(=O)[C@H](C)NC(=O)[C@H](Cc2ccccc2)NC(=O)[C@H](CCCCN)NC(=O)[C@H](CCCCN)NC(=O)[C@H](Cc2ccccc2)NC(=O)CNC1=O)C(C)C
+T03,CC[C@H](C)[C@@H]1NC(=O)[C@H](Cc2c[nH]c3ccccc23)NC(=O)[C@H]([C@@H](C)O)NC(=O)[C@@H]2CCCN2C(=O)[C@H]2CCCN2C(=O)[C@H](CO)NC(=O)[C@H](C)NC(=O)[C@H](CCN)NC(=O)[C@H](CCN)NC(=O)[C@H](Cc2c[nH]c3ccccc23)NC(=O)[C@H](CCN)NC(=O)[C@@H](CCN)NC(=O)[C@H](CCCN)NC(=O)[C@H](CCN)NC1=O
+T04,CC(C)[C@@H]1NC(=O)[C@@H](CCCNC(=N)N)NC(=O)[C@H]([C@@H](C)O)NC(=O)[C@@H](CCCCN)NC(=O)[C@H](C)NC(=O)[C@@H](Cc2ccccc2)NC1=O
+T05,CN1C(=O)[C@]2(S)CC3=CC=C[C@H](O)[C@H]3N2C(=O)[C@]1(S)CO
+T06,O=C1N[C@@H](Cc2ccccc2)C(=O)N2CCC[C@@H]12
+T07,NCCCN1CC(=O)N(Cc2ccccc2)CC(=O)N(CCCN)CC(=O)N(Cc2ccccc2)CC(=O)N(CCCN)CC(=O)N(Cc2ccccc2)CC1=O
+T08,N=C(N)NCCC[C@H]1C(=O)N(Cc2ccccc2)[C@@H](CCCNC(=N)N)C(=O)N1Cc1ccccc1
+T09,CC(C)C[C@@H]1NC(=O)[C@H](CC(C)C)NC(=O)[C@H](CCCCN)NC(=O)[C@H](CCCCN)NC(=O)[C@H](CC(C)C)NC(=O)[C@H](CC(C)C)NC(=O)[C@@H](N)CSSC[C@@H](C(N)=O)NC(=O)[C@H](CCCCN)NC(=O)[C@H](CCCCN)NC1=O
+T10,CC(C)[C@@H]1NC(=O)CNC(=O)[C@H](CCCNC(=N)N)NC(=O)[C@H](C(C)C)NC(=O)[C@H](CCCNC(=N)N)NC(=O)[C@H](C)NC(=O)[C@H](Cc2ccc(O)cc2)NC(=O)[C@H](C(C)C)NC(=O)[C@@H](NC(=O)[C@H](Cc2c[nH]c3ccccc23)NC(=O)[C@@H](N)CCCNC(=N)N)CSSC[C@@H](C(=O)N[C@@H](Cc2c[nH]c3ccccc23)C(=O)O)NC(=O)[C@H](CCCNC(=N)N)NC(=O)[C@H](CCCNC(=N)N)NC(=O)[C@H](Cc2ccc(O)cc2)NC(=O)[C@H](CCCNC(=N)N)NC1=O
+T11,CC[C@H](C)[C@H](NC(=O)[C@H](CC(C)C)NC(=O)[C@H](C)NC(=O)[C@@H]1CCCN1C(=O)[C@H](Cc1ccccc1)NC(=O)[C@H](C)NC(=O)[C@H](CCCCN)NC(=O)[C@H](CCSC)NC(=O)[C@H](CC(C)C)NC(=O)CNC(=O)CNC(=O)[C@H](CC(C)C)NC(=O)[C@@H](N)Cc1ccccc1)C(=O)N[C@H]1CSSC[C@@H](C(=O)O)NC(=O)[C@H](CCCCN)NC(=O)[C@H](CCCCN)NC(=O)[C@H]([C@@H](C)O)NC(=O)[C@H](C(C)C)NC(=O)[C@H](C)NC1=O
+T12,CC(C)[C@@H]1NC(=O)CNC(=O)[C@H](CCCNC(=N)N)NC(=O)[C@H](C(C)C)NC(=O)[C@@H]2CSSC[C@H](NC1=O)C(=O)N[C@@H](Cc1ccc(O)cc1)C(=O)N[C@@H](CCCNC(=N)N)C(=O)N[C@@H](CCCNC(=N)N)C(=O)N[C@H](C(=O)N[C@@H](Cc1c[nH]c3ccccc13)C(=O)O)CSSC[C@H](NC(=O)[C@H](Cc1c[nH]c3ccccc13)NC(=O)[C@@H](N)CCCNC(=N)N)C(=O)N[C@@H](C(C)C)C(=O)N[C@@H](Cc1ccc(O)cc1)C(=O)N[C@@H](C)C(=O)N2

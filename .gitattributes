@@ -1,0 +1,6 @@
+models/*.pkl filter=lfs diff=lfs merge=lfs -text
+artifacts/esm2/*.npz filter=lfs diff=lfs merge=lfs -text
+artifacts/pantarget/*.pkl filter=lfs diff=lfs merge=lfs -text
+artifacts/*.json filter=lfs diff=lfs merge=lfs -text
+artifacts/**/*.pkl filter=lfs diff=lfs merge=lfs -text
+artifacts/**/*.npz filter=lfs diff=lfs merge=lfs -text

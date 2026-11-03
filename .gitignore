@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# 运行产物
+*.log
+results_out/
+my_model.pkl
+finetuned_bundle.pkl
+
+# 系统
+.DS_Store
+Thumbs.db
+
+# 若模型改用 Git LFS，取消下面注释
+# *.pkl filter=lfs diff=lfs merge=lfs -text
+# *.npz filter=lfs diff=lfs merge=lfs -text
