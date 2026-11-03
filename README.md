@@ -82,7 +82,13 @@ python -m venv .venv
 
 ESM 序列分支为可选项（`torch` + `transformers`）。不装则自动回退为仅主模型，R² 约降 0.013，定量结果仍然有效。
 
-> ⚠️ 模型文件 `models/final_bundle.pkl` 由 **Git LFS** 托管。克隆后若该文件只有 130 字节，执行 `git lfs pull`。
+> ⚠️ 模型文件 `models/final_bundle.pkl` 由 **Git LFS** 托管。克隆后若该文件只有 130 字节：
+>
+> ```bash
+> git lfs pull
+> ```
+>
+> 无法使用 LFS 时，可从 [Releases](https://github.com/kanonmaoyue-lab/cpa-peptide/releases/latest) 直接下载 `final_bundle.pkl`，放入 `models/` 目录即可。
 
 ---
 
