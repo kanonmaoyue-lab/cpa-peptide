@@ -91,11 +91,3 @@ python cpamp_lib/269_audit_strains.py     # 生成 artifacts/strain_audit.csv
 python cpamp_lib/270_strain_support.py    # 生成 assets/strain_support.json 并接入推理与界面
 ```
 
-## 写论文时怎么表述
-
-不要写"155 株全部可靠"，应写：
-
-> 模型覆盖 155 个菌株，其中 81 株（52.3%，占样本 65.8%）的留出预测
-> R² ≥ 0.4；38 株（24.5%）受样本量限制预测力偏弱，其中 18 株
-> R² < 0（占样本 5.9%）。系统按菌株支撑度自动下调信赖等级，
-> 对 R² < 0 的菌株仅提供定性参考。
