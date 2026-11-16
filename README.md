@@ -144,6 +144,18 @@ python cpamp_tool.py predict -i my_peptides.csv -o result.csv
 
 判定规则：校准阳性率 ≥ 0.5 判为阳性，并满足生物学约束（总抗菌 = 抗细菌 ∪ 革兰阳性 ∪ 革兰阴性）。
 
+**排序指导（Hit-to-Lead 优先级）**
+
+```bash
+python cpamp_tool.py rank -i candidates.csv -o ranked.csv --save-notes
+```
+
+输出比 predict 多两列：优先级（1..N）与 建议（优先合成 / 备选 / 低优先 / 无定量值），
+并在终端打印这段排序的可信度与使用边界。--top 0.25 可调整「优先合成」的比例；
+--save-notes 会同时写一份 *_说明.txt，便于随结果一起存档。
+
+判定优先级用**定量点预测升序**；若整批都没给菌株（无定量值），自动退化为按定性概率降序，
+并在结论条中注明。
 **诊断偏差**
 
 ```bash
