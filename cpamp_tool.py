@@ -340,6 +340,46 @@ def cmd_check(args):
     return 0
 
 
+# ═══════════════════════════════════════════════════════════
+# rank：Hit-to-Lead 优先级排序
+# ═══════════════════════════════════════════════════════════
+def cmd_rank(args):
+    from cpamp_predict_v2 import predict, to_compact
+    from rank_guide import rank_by_activity, to_ranked_compact, guidance_text
+
+    src = load_query(args.input)
+    if src.empty:
+        raise SystemExit("输入为空")
+    r = predict(src, use_esm=not getattr(args, "no_esm", False),
+                calibrate=True, verbose=True,
+                bundle=getattr(args, "base", None))
+
+    ranked, summary = rank_by_activity(r, top=args.top)
+    out_df = to_ranked_compact(ranked, to_compact)
+    # 把排序结果前置，便于直接照表下单
+    front = [c for c in ("优先级", "建议") if c in out_df.columns]
+    if front:
+        out_df = out_df[front + [c for c in out_df.columns if c not in front]]
+
+    print()
+    print("  " + "─" * 62)
+    print(guidance_text(summary))
+    print("  " + "─" * 62)
+
+    if args.out:
+        out_df.to_csv(args.out, index=False, encoding="utf-8-sig")
+        print(f"\n  → {args.out}（{len(out_df)} 条）")
+        if args.save_notes:
+            note = args.out.rsplit(".", 1)[0] + "_说明.txt"
+            with open(note, "w", encoding="utf-8") as fh:
+                fh.write(guidance_text(summary) + "\n")
+            print(f"  → {note}")
+    else:
+        print()
+        print(out_df.to_string(index=False))
+    return 0
+
+
 def main():
     ap = argparse.ArgumentParser(
         description="环肽抗菌活性预测工具（含可微调）")
@@ -364,6 +404,17 @@ def main():
     p3.add_argument("-l", "--labels", required=True)
     p3.add_argument("--base", help="自定义模型文件")
     p3.set_defaults(func=cmd_check)
+
+    p4 = sub.add_parser("rank", help="按预测活性排序，给出合成优先级建议")
+    p4.add_argument("-i", "--input", required=True)
+    p4.add_argument("-o", "--out")
+    p4.add_argument("--top", type=float, default=0.10,
+                    help="「优先合成」的比例，默认 0.10（与论文 EF10 口径一致）")
+    p4.add_argument("--base", help="自定义模型文件")
+    p4.add_argument("--no-esm", action="store_true")
+    p4.add_argument("--save-notes", action="store_true",
+                    help="同时输出一份使用边界说明 .txt")
+    p4.set_defaults(func=cmd_rank)
 
     a = ap.parse_args()
     return a.func(a)

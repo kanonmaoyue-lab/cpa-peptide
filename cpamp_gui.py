@@ -514,9 +514,19 @@ class App:
         bar.pack(fill="x", padx=16, pady=(6, 2))
         self.run_btn = ttk.Button(bar, text="开始预测", command=self._run)
         self.run_btn.pack(side="left")
+        self.rank_btn = ttk.Button(bar, text="排序指导", command=self._rank,
+                                   state="disabled")
+        self.rank_btn.pack(side="left", padx=(8, 0))
         self.info = tk.Label(bar, text="就绪", bg=BG, fg=INK2,
                              font=(FONT_CJK, 10))
         self.info.pack(side="left", padx=12)
+
+        # 排序指导结论条（默认不显示，点「排序指导」后出现）
+        self._bar = bar
+        self.rank_tip = tk.Label(bar.master, text="", bg="#F3F8FF", fg="#1B4F86",
+                                 font=(FONT_CJK, 9), justify="left",
+                                 anchor="w", wraplength=1160,
+                                 padx=10, pady=6)
 
         # 明细面板（底部固定高度 + 滚动条，先占位再让结果卡扩张）
         dt = tk.Frame(P, bg=BG, height=118)
@@ -535,12 +545,13 @@ class App:
         # 结果
         wrap4, card4 = self._card(P, "④ 结果")
         wrap4.pack(fill="both", expand=True, padx=16, pady=(2, 10))
-        cols = ["ID", "定量_uM", "定量区间", "信赖等级", "定性_总抗菌",
-                "定性_抗细菌", "定性_抗革兰阳性", "定性_抗革兰阴性",
+        cols = ["优先级", "建议", "ID", "定量_uM", "定量区间", "信赖等级",
+                "定性_总抗菌", "定性_抗细菌", "定性_抗革兰阳性", "定性_抗革兰阴性",
                 "定性_抗真菌", "判定"]
-        W = {"ID": 50, "定量_uM": 70, "定量区间": 100, "信赖等级": 55,
-             "定性_总抗菌": 72, "定性_抗细菌": 72, "定性_抗革兰阳性": 82,
-             "定性_抗革兰阴性": 82, "定性_抗真菌": 68, "判定": 250}
+        W = {"优先级": 52, "建议": 66, "ID": 50, "定量_uM": 70, "定量区间": 100,
+             "信赖等级": 55, "定性_总抗菌": 66, "定性_抗细菌": 66,
+             "定性_抗革兰阳性": 76, "定性_抗革兰阴性": 76, "定性_抗真菌": 62,
+             "判定": 210}
         tree = ttk.Treeview(card4, columns=cols, show="headings", height=3)
         for c in cols:
             tree.heading(c, text=c)
@@ -566,6 +577,11 @@ class App:
             self.tree.delete(i)
         self.state["rows"] = None
         self.state["result"] = None
+        try:
+            self.rank_btn.config(state="disabled", text="排序指导")
+            self.rank_tip.pack_forget()
+        except Exception:
+            pass
         self.dtxt.config(state="normal")
         self.dtxt.delete("1.0", "end")
         self.dtxt.insert("1.0", "（点选上方一行查看两个通道的完整依据）")
@@ -633,6 +649,11 @@ class App:
         if self.type_var.get() != "（未提供）":
             d["CyclizationType"] = self.type_var.get()
         self.run_btn.config(state="disabled")
+        self.rank_btn.config(state="disabled", text="排序指导")
+        try:
+            self.rank_tip.pack_forget()
+        except Exception:
+            pass
         self.info.config(text=f"预测中…（{len(d)} 条）")
         self.state["busy"] = True
 
@@ -668,6 +689,40 @@ class App:
                 vals.append("" if (isinstance(v, float) and pd.isna(v)) else v)
             self.tree.insert("", "end", iid=str(i), values=vals)
         self.info.config(text=f"完成 {len(c2)} 条")
+        self.rank_btn.config(state="normal")
+
+    def _rank(self):
+        """按预测活性排序，给出合成优先级与富集证据（论文前瞻口径）。"""
+        from tkinter import messagebox
+        from cpamp_predict_v2 import to_compact
+        from rank_guide import (rank_by_activity, to_ranked_compact,
+                                guidance_text, TIER_TOP)
+
+        if self.state.get("result") is None:
+            messagebox.showinfo("提示", "请先点「开始预测」")
+            return
+        try:
+            ranked, summary = rank_by_activity(self.state["result"], top=0.10)
+            self.state["result"] = ranked
+            self.state["rows"] = ranked          # 与表格行序保持一致
+            self._fill(to_ranked_compact(ranked, to_compact))
+
+            n, k = summary["n"], summary["k_top"]
+            if summary["mode"] == "qual":
+                tag = "（未提供菌株，已退化为按定性概率排序）"
+            elif summary["n_no_quant"]:
+                tag = f"（其中 {summary['n_no_quant']} 条无定量值，已排在末尾）"
+            else:
+                tag = ""
+            self.rank_tip.config(
+                text=f"  排序完成：{n} 条中前 10%（{k} 条）标为「{TIER_TOP}」{tag}\n"
+                     f"  " + guidance_text(summary, compact=True))
+            self.rank_tip.pack(fill="x", padx=16, pady=(0, 6),
+                               after=getattr(self, "_bar", None))
+            self.rank_btn.config(text="已按活性排序")
+            self.info.config(text=f"已排序 · 优先 {k}/{n}")
+        except Exception:
+            messagebox.showerror("排序失败", traceback.format_exc()[-700:])
 
     def _detail(self, _e=None):
         sel = self.tree.selection()
