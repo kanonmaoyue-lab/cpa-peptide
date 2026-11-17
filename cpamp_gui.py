@@ -952,11 +952,13 @@ class App:
                 self.root.after(0, self._refresh_model_box)
                 self.root.after(0, lambda: (
                     log(f"完成，用时 {dt:.0f} 秒"),
-                    log(f"新模型：{out.name}"),
+                    log(f"新模型已保存：{out.name}"),
+                    log("已写入 models/active_model.txt，重启窗口后仍生效"),
                     self.model_lbl.config(text=f"当前模型：{out.name}"),
                     self.model_lbl_top.config(
                         text=f"当前模型：{out.name}"),
-                    self.learn_info.config(text="已切换到新模型")))
+                    self.learn_info.config(
+                        text=f"已保存并切换到 {out.name}（重启后仍生效）")))
             except Exception:
                 tb = traceback.format_exc()[-1000:]
                 self.root.after(0, lambda: (
