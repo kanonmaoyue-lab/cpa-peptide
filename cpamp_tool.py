@@ -173,7 +173,10 @@ def load_query(path):
 
 
 def load_bundle(path=None):
-    p = Path(path) if path else MODELS / "final_bundle.pkl"
+    from cpamp_predict_v2 import active_bundle
+    p = Path(path) if path else active_bundle()
+    if path is None and p.name != "final_bundle.pkl":
+        print(f"  [model] 使用已记住的重训模型：{p.name}")
     with open(p, "rb") as fh:
         return pickle.load(fh), p
 
@@ -298,6 +301,31 @@ def cmd_finetune(args):
     if "CyclizationType" in lab:
         ty |= {t for t in lab["CyclizationType"].astype(str) if t}
     nb["cyc_types"] = sorted(ty)
+
+    # 把新标注的肽并入「相似度参照」——它们现在已是训练数据。
+    # 不并入会让重训后的同类化学仍被判「结构远离训练集」，信赖等级卡在「中」。
+    try:
+        from rdkit import Chem, RDLogger
+        from rdkit.Chem import AllChem
+        RDLogger.DisableLog("rdApp.*")
+        ref0 = nb["fp_ref"]
+        ids0 = np.asarray(nb["fp_ids"])
+        fps, ids = [], []
+        for smi in pd.unique(lab["SMILES"]):
+            m = Chem.MolFromSmiles(str(smi))
+            if m is None:
+                continue
+            v = np.zeros(ref0.shape[1], np.float32)
+            fp = AllChem.GetMorganFingerprintAsBitVect(m, 2, ref0.shape[1])
+            v[list(fp.GetOnBits())] = 1.0
+            fps.append(v)
+            ids.append(-1)
+        if fps:
+            nb["fp_ref"] = np.vstack([ref0, np.vstack(fps)])
+            nb["fp_ids"] = np.concatenate([ids0, np.asarray(ids)])
+            print(f"  相似度参照：{len(ref0)} → {len(nb['fp_ref'])} 条")
+    except Exception as e:
+        print(f"  [warn] 扩充相似度参照失败：{e}")
     nb["finetune"] = {"n_labels": int(len(lab)),
                       "strains": sorted(set(sn.tolist())),
                       "labels_file": str(args.labels)}

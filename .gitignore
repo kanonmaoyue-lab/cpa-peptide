@@ -10,6 +10,8 @@ venv/
 results_out/
 my_model.pkl
 finetuned_bundle.pkl
+finetuned_*.pkl
+active_model.txt
 
 # 系统
 .DS_Store

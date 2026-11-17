@@ -25,6 +25,8 @@ sys.path.insert(0, str(ROOT / "cpamp_lib"))
 ASSETS = ROOT / "assets"
 DATA = ROOT / "data"
 MODELS = ROOT / "models"
+sys.path.insert(0, str(ROOT / "cpamp_lib"))
+from cpamp_predict_v2 import active_bundle, remember_bundle
 
 # ── 配色 ──
 BG = "#F2F7FC"
@@ -164,7 +166,7 @@ class App:
             pass
 
         self._imgs = {}
-        self.state = {"model": MODELS / "final_bundle.pkl", "rows": None,
+        self.state = {"model": active_bundle(), "rows": None,
                       "result": None, "busy": False}
 
         # 菌株 / 环化类型清单
@@ -241,6 +243,102 @@ class App:
         self.model_lbl_top.pack(side="right", padx=(12, 0))
         ttk.Button(right, text="?  帮助", width=10,
                    command=self._help).pack(side="right")
+        self.model_box = ttk.Combobox(right, state="readonly", width=38)
+        self.model_box.pack(side="right", padx=(0, 6))
+        self.model_box.bind("<<ComboboxSelected>>", self._on_model_pick)
+        self._refresh_model_box()
+
+    # ── 模型选择（条状，按修改时间倒序）────────────────────────
+    def _model_choices(self):
+        """扫描 models/*.pkl，返回 [(显示名, 路径)]，最近修改的排最前。"""
+        items = []
+        try:
+            pk = sorted(MODELS.glob("*.pkl"),
+                        key=lambda q: q.stat().st_mtime, reverse=True)
+        except Exception:
+            pk = []
+        for q in pk:
+            if q.name == "final_bundle.pkl":
+                tag = "基础模型"
+            else:
+                try:
+                    tag = time.strftime("%m-%d %H:%M",
+                                        time.localtime(q.stat().st_mtime))
+                except Exception:
+                    tag = ""
+            mb = q.stat().st_size / 1e6
+            items.append((f"{q.name}  ·  {tag}  ·  {mb:.0f}MB", q))
+        return items
+
+    def _refresh_model_box(self):
+        """重建下拉列表，并把当前生效的模型设为选中项。"""
+        self._model_map = self._model_choices()
+        try:
+            self.model_box["values"] = [k for k, _ in self._model_map]
+        except Exception:
+            return
+        cur = Path(self.state["model"])
+        for k, p in self._model_map:
+            try:
+                if p.resolve() == cur.resolve():
+                    self.model_box.set(k)
+                    return
+            except Exception:
+                continue
+        try:
+            self.model_box.set(cur.name)
+        except Exception:
+            pass
+
+    def _on_model_pick(self, _evt=None):
+        """用户在下拉条里选了某个模型。"""
+        sel = ""
+        try:
+            sel = self.model_box.get()
+        except Exception:
+            pass
+        for k, p in getattr(self, "_model_map", []):
+            if k == sel:
+                self.state["model"] = p
+                remember_bundle(None if p.name == "final_bundle.pkl" else p)
+                break
+        msg = f"当前模型：{Path(self.state['model']).name}"
+        for attr in ("model_lbl", "model_lbl_top"):
+            w = getattr(self, attr, None)
+            if w is not None:
+                try:
+                    w.config(text=msg)
+                except Exception:
+                    pass
+        try:
+            self.info.config(text=f"已切换到 {Path(self.state['model']).name}"
+                                  "（重启后保持）")
+        except Exception:
+            pass
+
+    def _switch_model(self):
+        """兼容旧调用：在基础模型与最近一次重训之间轮换。"""
+        base = MODELS / "final_bundle.pkl"
+        cur = Path(self.state["model"])
+        alt = next((p for _, p in self._model_choices()
+                    if p.name != "final_bundle.pkl"), None)
+        if cur.resolve() == base.resolve():
+            if alt is None:
+                return
+            self.state["model"] = alt
+            remember_bundle(alt)
+        else:
+            self.state["model"] = base
+            remember_bundle(None)
+        self._refresh_model_box()
+        msg = f"当前模型：{Path(self.state['model']).name}"
+        for attr in ("model_lbl", "model_lbl_top"):
+            w = getattr(self, attr, None)
+            if w is not None:
+                try:
+                    w.config(text=msg)
+                except Exception:
+                    pass
 
     def _help(self):
         tk = self.tk
@@ -845,11 +943,13 @@ class App:
             try:
                 lab = T.load_labels(f)
                 self.root.after(0, lambda: log(f"读入标注 {len(lab)} 条"))
-                out = MODELS / "finetuned_bundle.pkl"
+                out = MODELS / f"finetuned_{time.strftime('%Y%m%d_%H%M%S')}.pkl"
                 T.cmd_finetune(type("A", (), {
                     "labels": f, "out": str(out), "base": None})())
                 dt = time.time() - t0
                 self.state["model"] = out
+                remember_bundle(out)
+                self.root.after(0, self._refresh_model_box)
                 self.root.after(0, lambda: (
                     log(f"完成，用时 {dt:.0f} 秒"),
                     log(f"新模型：{out.name}"),

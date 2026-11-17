@@ -37,6 +37,40 @@ _BUNDLE_CANDS = [ROOT / "models" / "final_bundle.pkl",
                  ROOT / "artifacts" / "final_model" / "final_bundle.pkl"]
 BUNDLE = next((q for q in _BUNDLE_CANDS if q.exists()),
               _BUNDLE_CANDS[-1])
+
+# ── 当前生效模型（标注学习后可持久化）──────────────────────────
+ACTIVE_FILE = ROOT / "models" / "active_model.txt"
+BASE_BUNDLE = ROOT / "models" / "final_bundle.pkl"
+
+
+def active_bundle():
+    """返回当前应使用的模型路径：优先 active_model.txt，其次基础模型。"""
+    try:
+        if ACTIVE_FILE.exists():
+            name = ACTIVE_FILE.read_text(encoding="utf-8").strip()
+            cand = ROOT / "models" / name
+            if name and cand.exists():
+                return cand
+    except Exception:
+        pass
+    return BASE_BUNDLE
+
+
+def remember_bundle(path):
+    """把模型记为当前生效；传 None 表示恢复基础模型。"""
+    try:
+        if path is None:
+            if ACTIVE_FILE.exists():
+                ACTIVE_FILE.unlink()
+        else:
+            ACTIVE_FILE.parent.mkdir(parents=True, exist_ok=True)
+            ACTIVE_FILE.write_text(Path(path).name, encoding="utf-8")
+    except Exception:
+        pass
+
+
+# 若已做过标注学习并记录，则默认用它
+BUNDLE = active_bundle()
 ESM_CACHE = ROOT / "artifacts" / "esm2" / "esm2_t12_emb.npz"
 Z = 1.6448536269514722  # 90% 双侧
 CAL = ROOT / "artifacts" / "qual_calibration.json"

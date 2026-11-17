@@ -171,6 +171,22 @@ python cpamp_tool.py predict -i new.csv --base my_model.pkl
 
 标注文件至少需要：`SMILES, Strain, MIC_uM`（可选 `CyclizationType`）。
 
+**模型选择与记忆（界面）**
+
+窗口右上角有一个模型下拉条，按修改时间倒序列出 `models/` 下所有 `*.pkl`：
+
+```
+finetuned_20261117_205600.pkl  ·  11-17 20:56  ·  54MB
+finetuned_bundle.pkl           ·  11-17 14:22  ·  54MB
+final_bundle.pkl               ·  基础模型      ·  54MB
+```
+
+- 在「标注学习」页导入标注并完成后，新模型会自动生成、自动选中
+- 每次重训写入 `models/finetuned_YYYYmmdd_HHMMSS.pkl`，**不覆盖历史**
+- 随时可在下拉条里切回任一旧模型或基础模型
+- 选择写入 `models/active_model.txt`，**重启窗口后保持**
+- 命令行 `predict / rank / check` 不带 `--base` 时也遵循这份记录
+
 ---
 
 ## 6 适用域与局限
