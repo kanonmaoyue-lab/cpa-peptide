@@ -161,13 +161,24 @@ r = predict(df, use_esm=True, calibrate=True)
 ## 6 复现命令
 
 ```powershell
-# 1. 训练并打包最终模型（约 8 分钟）
-.venv\Scripts\python.exe 03_环肽_CPAMP\代码\229_package_final.py
+# 1 批量推理（推荐入口，自动使用“当前生效模型”）
+python cpamp_tool.py predict -i examples/demo.csv -o out.csv --detail
 
-# 2. 批量推理
-.venv\Scripts\python.exe 03_环肽_CPAMP\代码\cpamp_predict_v2.py `
-    --csv 输入.csv --out 输出.csv
+# 2 排序与富集口径
+python cpamp_tool.py rank -i examples/demo.csv -o ranked.csv --save-notes
+
+# 3 直接调用推理模块（等价于 1，但不经命令行封装）
+python -m cpamp_lib.cpamp_predict_v2 --csv examples/demo.csv --out out.csv
 ```
 
-**旧接口 `cpamp_predict.py` 保持不变**，仍加载 `expanded_models.pkl`（0.6448）。
-需要论文口径时请用 `cpamp_predict_v2.py`。
+**旧接口** `cpamp_lib/cpamp_predict.py` 保持不变，仍加载 `expanded_models.pkl`（0.6448）。
+需要论文口径时请走 `cpamp_tool.py predict` 或 `cpamp_lib/cpamp_predict_v2.py`。
+
+> **关于重新打包模型**
+>
+> 内部打包脚本 `229_package_final.py` **未随仓库分发**：它依赖
+> 7.4 MB 的原始 DBAASP 抽取文件 `dbaasp_cyclic_all_types.csv`，该文件不在公开仓库中。
+>
+> 本仓库提供的是**已打包的最终模型**（`models/final_bundle.pkl`）与推理/评估接口，
+> 因此读者可以复现**推理结果与评估指标**，但不能从零重建模型权重。
+> 若需要从零重建，请先从 DBAASP 官网获取原始数据并按其许可使用。

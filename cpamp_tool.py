@@ -98,6 +98,9 @@ def load_labels(path):
         "Strain": df[ct].astype(str).str.strip(),
         "MIC_uM": pd.to_numeric(df[cy], errors="coerce"),
     })
+    cid = _col(df, ["id", "序号", "编号", "name", "名称", "cpid"])
+    out["ID"] = (df[cid].astype(str).values if cid
+                 else [f"R{i+1}" for i in range(len(df))])
     q = _col(df, ["seq", "sequence", "序列"])
     if q:
         out["Seq"] = df[q].fillna("").astype(str)
@@ -244,6 +247,19 @@ def cmd_finetune(args):
     feats, keep, resolved = build_features(
         lab["SMILES"].fillna("").tolist(),
         lab["Seq"].fillna("").tolist() if "Seq" in lab else [""] * len(lab))
+    n_bad = len(lab) - len(keep)
+    if n_bad:
+        bad_mask = np.ones(len(lab), bool)
+        bad_mask[keep] = False
+        bad = lab.iloc[np.where(bad_mask)[0]]
+        print(f"  ⚠️ SMILES 无法解析 {n_bad} 条，已跳过（不参与训练）：")
+        for _, r in bad.head(10).iterrows():
+            tag = r.get("ID", "?")
+            smi = str(r.get("SMILES", "")).strip()
+            smi = smi if smi and smi.lower() != "nan" else "（空）"
+            print(f"      · {tag}  {smi[:64]}")
+        if n_bad > 10:
+            print(f"      … 其余 {n_bad - 10} 条省略")
     lab = lab.iloc[keep].reset_index(drop=True)
     Xn = np.nan_to_num(feats["legacy"], nan=0.0, posinf=0.0, neginf=0.0)
     yn = lab["y"].to_numpy(float)
@@ -252,7 +268,7 @@ def cmd_finetune(args):
         cfn = pd.to_numeric(lab["cfuGroup"], errors="coerce").to_numpy(float)
     else:
         cfn = np.full(len(lab), np.nan)
-    print(f"  可解析 {len(lab)} 条；SMILES 无法解析 {len(feats['legacy']) - 0 if False else 0}")
+    print(f"  可解析 {len(lab)} 条（输入 {len(lab) + n_bad} 条，跳过 {n_bad} 条）")
 
     # 拼接
     Xall = np.vstack([Xb, Xn])

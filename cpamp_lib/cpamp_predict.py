@@ -14,7 +14,14 @@ def build_features(smiles,sequences):
     RDLogger.DisableLog('rdApp.*')
     smiles=list(smiles);sequences=list(sequences)
     if len(smiles)!=len(sequences):raise ValueError('SMILES and sequence row counts differ')
-    keep=np.array([i for i,s in enumerate(smiles) if isinstance(s,str) and Chem.MolFromSmiles(s) is not None],int)
+    def _parseable(s):
+        """空串会被 RDKit 解析成“零原子分子”而非 None，必须显式排除，
+        否则下游 compute_features 会抛出难以定位的异常。"""
+        if not isinstance(s, str) or not s.strip():
+            return False
+        m = Chem.MolFromSmiles(s)
+        return m is not None and m.GetNumAtoms() > 0
+    keep=np.array([i for i,s in enumerate(smiles) if _parseable(s)],int)
     if not len(keep):return {k:np.empty((0,2331),np.float32) for k in ['legacy','fixed','fixed_delta']},keep,[]
     ss=[smiles[i] for i in keep];seq=[normalize_sequence(sequences[i]) for i in keep]
     m90=load_script('90_build_expanded.py')
