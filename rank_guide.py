@@ -46,6 +46,7 @@ TIER_TOP = "优先合成"
 TIER_MID = "备选"
 TIER_LOW = "低优先"
 TIER_NQ = "无定量值"
+TIER_NA = "无法排序"
 
 
 def _qual_col(df: pd.DataFrame) -> Optional[str]:
@@ -92,6 +93,17 @@ def rank_by_activity(df: pd.DataFrame, top: float = 0.10,
         else:
             mode = "none"
 
+    # 缺定量与定性两列时无法排序：不分档，避免按输入行号误标「优先合成」
+    if mode == "none":
+        out.insert(0, "优先级", [None] * n)
+        out.insert(1, "建议", [TIER_NA] * n)
+        return out, {
+            "n": n, "top_frac": top, "k_top": 0, "k_mid": 0,
+            "mode": mode, "n_no_quant": n,
+            "tiers": {TIER_NA: n},
+            "note": "缺少定量与定性列，无法排序；不按行号分档",
+        }
+
     # 分档
     k_top = max(1, int(math.ceil(n * top))) if n else 0
     k_mid = max(k_top, int(math.ceil(n * mid))) if n else 0
@@ -137,6 +149,9 @@ def to_ranked_compact(ranked: pd.DataFrame, compact_fn) -> pd.DataFrame:
 
 def guidance_text(summary: dict, compact: bool = False) -> str:
     """把论文证据转成给使用者看的一段说明（CLI / GUI 共用）。"""
+    if summary.get("mode") == "none":
+        return ("这批结果既无定量 MIC 值、也无定性概率，无法给出优先级排序。"
+                "请指定菌株（得到定量通道输出），或确认定性模型可用后重试。")
     v = VALIDATION
     k = summary.get("k_top", 0)
     n = summary.get("n", 0)

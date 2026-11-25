@@ -806,6 +806,14 @@ class App:
             self._fill(to_ranked_compact(ranked, to_compact))
 
             n, k = summary["n"], summary["k_top"]
+            if summary["mode"] == "none":
+                self.rank_tip.config(
+                    text="  " + guidance_text(summary, compact=True))
+                self.rank_tip.pack(fill="x", padx=16, pady=(0, 6),
+                                   after=getattr(self, "_bar", None))
+                self.rank_btn.config(text="已按活性排序")
+                self.info.config(text="无法排序：缺定量与定性")
+                return
             if summary["mode"] == "qual":
                 tag = "（未提供菌株，已退化为按定性概率排序）"
             elif summary["n_no_quant"]:
